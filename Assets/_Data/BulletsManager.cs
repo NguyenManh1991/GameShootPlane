@@ -13,6 +13,7 @@ public class BulletsManager : MonoBehaviour
     void Start()
     {
         LoadsBullets();
+         HideAll();
     }
 
     // Update is called once per frame
@@ -46,5 +47,12 @@ public class BulletsManager : MonoBehaviour
 
         }
         return null;
+    }
+    protected virtual void HideAll()
+    {
+        foreach(var bullet in bullets)
+        {
+            bullet.gameObject.SetActive(false);
+        } 
     }
 }

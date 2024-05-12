@@ -25,7 +25,8 @@ public class InputManager : MonoBehaviour
 
     protected virtual void LoadMousePos()
     {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(mousePos);
-    }
+        Vector3 mousePos1 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.x=mousePos1.x;
+        mousePos.y=mousePos1.y;
+    }  
 }

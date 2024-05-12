@@ -5,21 +5,31 @@ using UnityEngine.UIElements;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public float speedAttack = 0.5f;
+    public float attackDelay = 0.5f;
+    public float fixedTimer = 0f;
     // Start is called before the first frame update
     void Start()
     {
-      InvokeRepeating ("playerAttack",2f,speedAttack); 
+      //InvokeRepeating ("playerAttack",2f,AttackDelay); 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        FixedAttacking();
     }
 
     protected virtual void playerAttack()
     {
-        BulletsManager.instance.Spawn("BulletsPlayer", transform.position);
+      Transform bullet= BulletsManager.instance.Spawn("BulletsPlayer", transform.position);
+       bullet.gameObject.SetActive(true);   
+    }
+
+    protected virtual void FixedAttacking()
+    {
+        fixedTimer += Time.fixedDeltaTime;
+        if (fixedTimer < attackDelay) return;
+        fixedTimer = 0f;
+        playerAttack();
     }
 }
