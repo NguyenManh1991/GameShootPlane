@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletFly : MonoBehaviour
 {
+    [Header("Bullet")]
     public float speed = 10f;
     void Start()
     {

@@ -18,18 +18,19 @@ public class PlayerAttack : MonoBehaviour
     {
         FixedAttacking();
     }
-
-    protected virtual void playerAttack()
-    {
-      Transform bullet= BulletsManager.instance.Spawn("BulletsPlayer", transform.position);
-       bullet.gameObject.SetActive(true);   
-    }
-
     protected virtual void FixedAttacking()
     {
         fixedTimer += Time.fixedDeltaTime;
         if (fixedTimer < attackDelay) return;
         fixedTimer = 0f;
-        playerAttack();
+        PlayerAttacking();
     }
+  
+    protected virtual void PlayerAttacking()
+    {
+      Transform bullet= BulletsManager.instance.Spawn("BulletPlayer", transform.position);
+       bullet.gameObject.SetActive(true);   
+    }
+
+   
 }

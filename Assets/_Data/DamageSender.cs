@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DamageSender : MonoBehaviour
 {
+    [Header("Damage Sender")]
     public float damage = 1f;
     private void OnTriggerEnter(Collider other)
     {
@@ -15,6 +16,7 @@ public class DamageSender : MonoBehaviour
 
     protected virtual void DeSpawn()
     {
+        Debug.Log("go here");   
         Destroy(transform.parent.gameObject);
     }
 }
