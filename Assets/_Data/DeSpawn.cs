@@ -6,11 +6,12 @@ public class DeSpawn : MonoBehaviour
 {
     public float despawnLimit = 20f;
     public float distance = 0f;
+    public string camName = "Main Camera";
     public Transform mainCam;
 
     public virtual void DeSpawning()
     {
-        Debug.Log("Call here");
+    
         Destroy(transform.parent.gameObject);
     }
 
@@ -24,7 +25,7 @@ public class DeSpawn : MonoBehaviour
     }
     protected virtual void LoadCam()
     {
-        mainCam = GameObject.Find("Main Camera").transform;
+        mainCam = GameObject.Find(camName).transform;
     }
 
     public virtual void DespawnByDistance()

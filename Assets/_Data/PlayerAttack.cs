@@ -7,13 +7,8 @@ public class PlayerAttack : MonoBehaviour
 {
     public float attackDelay = 0.5f;
     public float fixedTimer = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-      //InvokeRepeating ("playerAttack",2f,AttackDelay); 
-    }
+    public string BulletPlayer = "BulletPlayer";
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         FixedAttacking();
@@ -25,12 +20,14 @@ public class PlayerAttack : MonoBehaviour
         fixedTimer = 0f;
         PlayerAttacking();
     }
-  
+
     protected virtual void PlayerAttacking()
     {
-      Transform bullet= BulletsManager.instance.Spawn("BulletPlayer", transform.position);
-       bullet.gameObject.SetActive(true);   
+        Transform bullet = BulletsManager.instance.Spawn(BulletPlayer, transform.position);
+        bullet.gameObject.SetActive(true);
+        //ScoreManager.instance.Add("BulletCount", 1);
+
     }
 
-   
+
 }

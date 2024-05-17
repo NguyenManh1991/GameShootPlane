@@ -9,14 +9,15 @@ public class DamageSender : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         DamageReceiver receiver = other.GetComponent<DamageReceiver>();
+       if (receiver == null) return;
         receiver.Damaged(damage);
 
-        DeSpawn();
+        //DeSpawn();
     }
 
     protected virtual void DeSpawn()
     {
-        Debug.Log("go here");   
+
         Destroy(transform.parent.gameObject);
     }
 }

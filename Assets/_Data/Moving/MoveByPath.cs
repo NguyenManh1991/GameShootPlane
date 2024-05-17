@@ -14,7 +14,9 @@ public class MoveByPath : MonoBehaviour
     public List<Transform> checkpoints;
     protected virtual void Start()
     {
+        
         LoadCheckpoints();
+        
     }
     private void Update()
     {
@@ -23,10 +25,12 @@ public class MoveByPath : MonoBehaviour
     }
     protected virtual void LoadCheckpoints()
     {
+        checkpoints.Clear();
         checkpointsPath = GameObject.Find(transform.parent.name + "_Path").transform;
         foreach (Transform checkpoint in checkpointsPath)
         {
             checkpoints.Add(checkpoint);
+            
         }
 
     }
@@ -46,7 +50,7 @@ public class MoveByPath : MonoBehaviour
     {
         checkPointDistance = Vector3.Distance(transform.parent.position, CurrentCheckPoint().position);
         if (checkPointDistance <= 0) checkPointIndex++;
-        if (checkPointIndex >= checkpoints.Count) 
+        if (checkPointIndex == checkpoints.Count) 
         { 
             checkPointIndex = checkpoints.Count - 1;
             pathFinish = true;  

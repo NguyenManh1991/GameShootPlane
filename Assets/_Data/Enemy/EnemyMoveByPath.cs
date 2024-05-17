@@ -11,6 +11,7 @@ public class EnemyMoveByPath :MoveByPath
     protected override void Start()
     {
         base.Start();
+        
         LoadEnemyCtrl();
     }
 

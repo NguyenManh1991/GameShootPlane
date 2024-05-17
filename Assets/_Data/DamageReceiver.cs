@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
+
 using UnityEngine;
-using UnityEngine.Rendering;
+
 
 public class DamageReceiver : MonoBehaviour
 {
@@ -32,7 +30,7 @@ public class DamageReceiver : MonoBehaviour
     protected virtual void Dead()
     {
         if (IsAlive()) return;
-        Debug.Log(transform.parent.name + "dying");
+
 
         DestroyEnemy();
     }

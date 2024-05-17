@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BulletsManager : MonoBehaviour
 {
+    public string BulletHolder = "BulletHolder";
+    public Transform loadBulletHolder;
     public static BulletsManager instance;
     public List<Transform> bullets = new();
     private void Awake()
@@ -12,16 +14,10 @@ public class BulletsManager : MonoBehaviour
     }
     void Start()
     {
+        LoadBulletHolder();
         LoadsBullets();
-         HideAll();
+        HideAll();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     protected virtual void LoadsBullets()
     {
         foreach (Transform bullet in transform)
@@ -30,12 +26,18 @@ public class BulletsManager : MonoBehaviour
         }
     }
 
+    protected virtual void LoadBulletHolder()
+    {
+        loadBulletHolder = GameObject.Find(BulletHolder).transform;
+    }
+
     public virtual Transform Spawn(string bulletName, Vector3 spawnPosition)
     {
         Transform bulletPrefab = GetBulletByName(bulletName);
         Transform newBullet = Instantiate(bulletPrefab);
 
         newBullet.transform.position = spawnPosition;
+        newBullet.transform.SetParent(loadBulletHolder);
         return newBullet;
     }
 
@@ -50,9 +52,9 @@ public class BulletsManager : MonoBehaviour
     }
     protected virtual void HideAll()
     {
-        foreach(var bullet in bullets)
+        foreach (var bullet in bullets)
         {
             bullet.gameObject.SetActive(false);
-        } 
+        }
     }
 }
