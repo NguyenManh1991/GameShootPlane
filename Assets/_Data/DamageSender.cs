@@ -12,7 +12,7 @@ public class DamageSender : MonoBehaviour
        if (receiver == null) return;
         receiver.Damaged(damage);
 
-        //DeSpawn();
+        DeSpawn();
     }
 
     protected virtual void DeSpawn()

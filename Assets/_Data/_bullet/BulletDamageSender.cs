@@ -14,7 +14,7 @@ public class BulletDamageSender : DamageSender
 
     protected override void DeSpawn()
     {
-        
+       
         bulletControler.deSpawn.DeSpawning();
         
        

@@ -5,12 +5,13 @@ using UnityEngine;
 public class BulletControler : MonoBehaviour
 {
     public DeSpawn deSpawn;
-    public string deSpawning = "DeSpawn";
+    public BulletDamageSender bulletDamageSender;
+    string deSpawning = "DeSpawn";
 
-    void Start()
+    void Awake()
     {
         deSpawn = transform.Find(deSpawning).GetComponent<DeSpawn>();
-
+        bulletDamageSender= GetComponentInChildren<BulletDamageSender>();
     }
 
 

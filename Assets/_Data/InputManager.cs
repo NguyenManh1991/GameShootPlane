@@ -11,12 +11,7 @@ public class InputManager : MonoBehaviour
     {
         InputManager.Instance = this;
     }
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+   
     void Update()
     {
         LoadMousePos();

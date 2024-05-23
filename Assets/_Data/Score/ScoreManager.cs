@@ -23,13 +23,26 @@ public class ScoreManager : MonoBehaviour
         }
         exitScore.value += value;
     }
+    public virtual bool Deduct(string key, int value)
+    {
+        Score exitScore = Get(key);
+        if (exitScore == null) return false;
+        int newValue = exitScore.value - value;
+
+        if (newValue < 0) return false;
+        exitScore.value = newValue;
+
+        return true;
+
+    }
 
     protected virtual void AddNewScore(string key, int value = 1)
     {
-        Score score = new Score();
-
-        score.key = key;
-        score.value = value;
+        Score score = new()
+        {
+            key = key,
+            value = value
+        };
         scores.Add(score);
 
     }
