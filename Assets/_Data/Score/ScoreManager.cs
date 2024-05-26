@@ -9,6 +9,10 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
+        if(ScoreManager.instance != null)
+        {
+            Debug.LogError("Only One ScoreManager allow",gameObject);
+        }
         ScoreManager.instance = this;
     }
 

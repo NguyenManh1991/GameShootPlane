@@ -9,6 +9,10 @@ public class PlayerCtrl : MonoBehaviour
     public PlayerModels playerModels;
     protected virtual void Awake()
     {
+        if(PlayerCtrl.instance != null)
+        {
+            Debug.LogError("Only one PlayerCtrl allow", gameObject);
+        }
         PlayerCtrl.instance = this;
 
     }

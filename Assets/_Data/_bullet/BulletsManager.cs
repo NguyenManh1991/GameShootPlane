@@ -10,6 +10,10 @@ public class BulletsManager : MonoBehaviour
     public List<Transform> bullets = new();
     private void Awake()
     {
+        if(BulletsManager.instance != null)
+        {
+            Debug.LogError("Only one BulletsManager allow", gameObject);
+        }
         BulletsManager.instance = this;
     }
     void Start()

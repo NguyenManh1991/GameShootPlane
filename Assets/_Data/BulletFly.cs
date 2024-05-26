@@ -9,6 +9,6 @@ public class BulletFly : MonoBehaviour
    
     void Update()
     {
-       this. transform.parent.Translate(Vector3.right*speed*Time.deltaTime);
+       this. transform.parent.Translate(Vector3.up*speed*Time.deltaTime);
     }
 }
