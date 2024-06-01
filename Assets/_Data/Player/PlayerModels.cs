@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerModels : MonoBehaviour
 {
     public int modelIndex = 0;
-    string StrikePoints = "StrikePoints";
+    string strikePoint = "StrikePoints";
     [SerializeField] protected List<Transform> models;
     [SerializeField] protected List<Transform> strikePoints;
 
@@ -14,8 +14,6 @@ public class PlayerModels : MonoBehaviour
         LoadModel();
         int index = LoadForSaveGame();
         ModelActive(index);
-
-
     }
 
     protected virtual void LoadModel()
@@ -54,7 +52,7 @@ public class PlayerModels : MonoBehaviour
     {
         strikePoints.Clear();
         Transform currentModels = CurentModel();
-        Transform strikePointsHolder = currentModels.Find(StrikePoints);
+        Transform strikePointsHolder = currentModels.Find(strikePoint);
         if (strikePointsHolder == null) return;
         foreach(Transform point in strikePointsHolder)
         {

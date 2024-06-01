@@ -1,20 +1,24 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class DamageReceiver : MonoBehaviour
 {
-    public float hp = 0;
-    public float maxHp = 10;
-
-    private void OnEnable()
+    [SerializeField] protected float hp = 0;
+    [SerializeField] protected float maxHp = 0;
+   
+   protected virtual void Start()
     {
-        ResetHp();
-    }
-
+       ResetHp();
+    } 
     protected virtual void ResetHp()
     {
-        hp = maxHp;
+        hp = MaxHp();
+    }
+    public virtual float MaxHp()
+    {
+        return maxHp;
     }
 
     public virtual void Damaged(float damage)
@@ -44,5 +48,10 @@ public class DamageReceiver : MonoBehaviour
     protected virtual void DestroyEnemy()
     {
         Destroy(transform.parent.gameObject);
+    }
+
+    public virtual float Hp()
+    {
+        return hp;
     }
 }

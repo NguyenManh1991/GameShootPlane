@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class EnemyMoveByPath :MoveByPath 
+public class EnemyMoveByPath : MoveByPath
 {
     [Header("Enemy")]
     public EnemyCtrl enemyCtrl;
@@ -11,7 +11,7 @@ public class EnemyMoveByPath :MoveByPath
     protected override void Start()
     {
         base.Start();
-        
+
         LoadEnemyCtrl();
     }
 
@@ -23,6 +23,10 @@ public class EnemyMoveByPath :MoveByPath
     protected override void Moving()
     {
         base.Moving();
-        if(IsTheEndOfPath()) { enemyCtrl.deSpawn.DeSpawning(); }
+        if (IsTheEndOfPath())
+        {
+            enemyCtrl.deSpawn.DeSpawning();
+            ScoreManager.instance.Add(ScoreType.EnemePassed.ToString());
+        }
     }
 }

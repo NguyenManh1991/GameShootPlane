@@ -5,19 +5,17 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    public List<Score> scores;
+    [SerializeField] protected List<Score> scores;
 
     private void Awake()
     {
-        if(ScoreManager.instance != null)
+        if (ScoreManager.instance != null)
         {
-            Debug.LogError("Only One ScoreManager allow",gameObject);
+            Debug.LogError("Only One ScoreManager allow", gameObject);
         }
         ScoreManager.instance = this;
     }
-
-
-    public virtual void Add(string key, int value)
+    public virtual void Add(string key, int value = 1)
     {
         Score exitScore = Get(key);
         if (exitScore == null)
@@ -39,7 +37,6 @@ public class ScoreManager : MonoBehaviour
         return true;
 
     }
-
     protected virtual void AddNewScore(string key, int value = 1)
     {
         Score score = new()
@@ -50,13 +47,11 @@ public class ScoreManager : MonoBehaviour
         scores.Add(score);
 
     }
-
     public virtual Score Get(string key)
     {
         foreach (var score in scores)
         {
             if (score.key == key) return score;
-
         }
         return null;
     }

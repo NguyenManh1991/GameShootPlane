@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerLevel : Level
 {
     public PlayerCtrl playerCtrl;
-
+    [SerializeField] protected int coefficientDeductGold = 2;
     protected virtual void Start()
     {
         playerCtrl=GetComponentInParent<PlayerCtrl>();
@@ -30,6 +30,6 @@ public class PlayerLevel : Level
     }
     protected virtual int GetLevelUpCost()
     {
-        return level;
+        return level* coefficientDeductGold;
     }
 }

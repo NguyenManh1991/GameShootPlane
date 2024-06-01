@@ -13,18 +13,15 @@ public class UiGoldUpdate : MonoBehaviour
     {
         UpdateTextGold();
     }
-
     protected virtual void LoadTextGold()
     {
-        textGold=GetComponent<TextMeshProUGUI>();
+        textGold = GetComponent<TextMeshProUGUI>();
     }
-
-
     protected virtual void UpdateTextGold()
     {
         Score gold = ScoreManager.instance.Get(ScoreType.GoldCount.ToString());
         int goldValue = 0;
-        if(gold != null) goldValue=gold.value;
+        if (gold != null) goldValue = gold.value;
         textGold.text = goldValue.ToString() + "G";
     }
 }

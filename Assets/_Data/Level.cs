@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    public int level = 1;
+    [Header("Level")]
+    [SerializeField] protected int level = 1;
     public virtual void Up(int add = 1)
     {
         level += add;
+    }
+
+    public virtual int CurrentLevel()
+    {
+        return level;
     }
 }

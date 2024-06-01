@@ -30,6 +30,7 @@ public class PlayerAttack : MonoBehaviour
     }
     protected virtual void FixedAttacking()
     {
+        if (GameOver.Instance.IsGameOver()) return;
         fixedTimer += Time.fixedDeltaTime;
         if (fixedTimer < Delay()) return;
         fixedTimer = 0f;
@@ -39,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
 
     protected virtual float Delay()
     {
-        int level = playerCtrl.playerLevel.level;
+        int level = playerCtrl.playerLevel.CurrentLevel();
         finalDelay = baseDelay - (level * speedDelay);
         if (finalDelay < minDelay) finalDelay = minDelay;
         return finalDelay;
@@ -91,7 +92,7 @@ public class PlayerAttack : MonoBehaviour
     }
     protected virtual float GetDamage()
     {
-        return playerCtrl.playerLevel.level;
+        return playerCtrl.playerLevel.CurrentLevel();
     }
 
     protected virtual void LoadStrikepoint()
